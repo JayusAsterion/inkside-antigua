@@ -1,73 +1,162 @@
-# React + TypeScript + Vite
+# Inkside Antigua Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing page dark premium para **Inkside Antigua**, un estudio de tatuajes y piercings en Antigua Guatemala. El proyecto fue construido como pieza de portafolio, enfocada en dirección visual, composición editorial, experiencia interactiva y una arquitectura frontend limpia con React.
 
-Currently, two official plugins are available:
+## Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+La landing combina estética tattoo studio, diseño editorial y una interfaz monocromática con fotografías en color desaturado. La experiencia incluye secciones comerciales completas, navegación responsive, modales de servicio/artista, galería visual, mapa integrado y animaciones suaves.
 
-## React Compiler
+El objetivo visual fue crear una presencia digital intensa y moderna sin copiar plantillas de referencia: dark, artística, premium y alineada al logo real de Inkside.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Stack
 
-## Expanding the ESLint configuration
+- React 19
+- Vite 8
+- TypeScript
+- Tailwind CSS 4
+- Motion
+- Lenis
+- Lucide React
+- clsx + tailwind-merge
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Funcionalidades
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Navbar responsive con logo real de Inkside.
+- Hero editorial con collage visual.
+- Sección About con composición tipo collage.
+- ServicesSection tipo bento/masonry con imágenes y ficha modal por servicio.
+- ArtistsSection con cards interactivas y modal de perfil.
+- GallerySection con collage visual y lightbox.
+- ProcessSection con pasos del proceso.
+- ContactSection con CTA a redes y mapa a color.
+- Footer con marca, navegación y redes sociales.
+- Smooth scroll con Lenis.
+- Animaciones de entrada y hover con Motion.
+- Favicon personalizado con el logo de Inkside.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Estructura Principal
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```txt
+src/
+  assets/
+    images/
+      brand/
+      tattoos/
+  components/
+    layout/
+    ui/
+  data/
+  lib/
+  sections/
+  styles/
+  App.tsx
+  main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Instalación
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+## Desarrollo
+
+```bash
+npm run dev
+```
+
+Por defecto Vite levanta el proyecto en:
+
+```txt
+http://localhost:5173
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+## Lint
+
+```bash
+npm run lint
+```
+
+## Preview de Producción
+
+```bash
+npm run preview
+```
+
+## Imágenes
+
+Las imágenes de prueba están en:
+
+```txt
+src/assets/images/tattoos/
+```
+
+El proyecto detecta imágenes con este patrón:
+
+```txt
+tattoo-*.jpg
+tattoo-*.jpeg
+tattoo-*.png
+tattoo-*.webp
+```
+
+Para reemplazarlas, conserva nombres como:
+
+```txt
+tattoo-01.png
+tattoo-02.png
+tattoo-03.png
+tattoo-04.png
+tattoo-05.png
+tattoo-06.png
+```
+
+El logo de marca se encuentra en:
+
+```txt
+src/assets/images/brand/inkside-logo.png
+```
+
+Y el favicon público en:
+
+```txt
+public/favicon.png
+```
+
+## Datos Editables
+
+El contenido reutilizable vive en:
+
+```txt
+src/data/siteData.ts
+```
+
+Desde ahí se administran:
+
+- Información general de marca.
+- CTAs.
+- Redes sociales.
+- Servicios.
+- Artistas.
+- Galería.
+- Proceso.
+- Contacto.
+
+## Decisiones de Diseño
+
+- Interfaz black & white / grayscale para respetar la identidad de marca.
+- Fotografías en color desaturado para conservar textura, piel, tinta y realismo.
+- Bordes finos, fondos oscuros, overlays sutiles y jerarquía editorial.
+- Cards con interacción visual sin perder legibilidad.
+- Modales informativos pensados para conversión: reservar, cotizar y contactar por Instagram.
+
+## Estado del Proyecto
+
+Proyecto frontend estático, listo para despliegue en servicios como Vercel, Netlify, Cloudflare Pages o cualquier hosting que soporte apps Vite.
+
