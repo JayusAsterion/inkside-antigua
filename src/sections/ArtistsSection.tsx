@@ -48,7 +48,7 @@ export function ArtistsSection() {
                 {image ? (
                   <img
                     alt={`${artist.name} visual`}
-                    className="absolute inset-0 h-full w-full object-cover opacity-88 grayscale brightness-90 contrast-110 saturate-75 transition duration-500 group-hover:scale-105 group-hover:opacity-96 group-hover:brightness-100 md:opacity-78 md:brightness-80"
+                    className="absolute inset-0 h-full w-full object-cover opacity-90 brightness-95 contrast-110 saturate-90 transition duration-500 group-hover:scale-105 group-hover:opacity-98 group-hover:brightness-105 group-hover:saturate-100 md:opacity-82 md:brightness-85 md:saturate-75"
                     src={image}
                   />
                 ) : null}

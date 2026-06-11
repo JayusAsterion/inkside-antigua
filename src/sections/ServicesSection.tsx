@@ -140,7 +140,7 @@ export function ServicesSection() {
                 {image ? (
                   <img
                     alt=""
-                    className="absolute inset-0 h-full w-full object-cover opacity-82 grayscale brightness-90 contrast-110 saturate-75 transition duration-500 group-hover:scale-[1.04] group-hover:opacity-94 group-hover:brightness-100 group-hover:saturate-90 md:opacity-68 md:brightness-80"
+                    className="absolute inset-0 h-full w-full object-cover opacity-86 brightness-95 contrast-110 saturate-90 transition duration-500 group-hover:scale-[1.04] group-hover:opacity-96 group-hover:brightness-105 group-hover:saturate-100 md:opacity-72 md:brightness-85 md:saturate-75"
                     src={image}
                   />
                 ) : null}

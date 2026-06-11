@@ -77,7 +77,7 @@ export function HeroSection() {
             {heroImages[0] ? (
               <img
                 alt=""
-                className="h-full w-full object-cover opacity-88 grayscale brightness-90 contrast-110 saturate-75 md:opacity-78 md:brightness-80"
+                className="h-full w-full object-cover opacity-90 brightness-95 contrast-110 saturate-90 md:opacity-80 md:brightness-85 md:saturate-75"
                 src={heroImages[0]}
               />
             ) : null}
@@ -94,21 +94,21 @@ export function HeroSection() {
             {heroImages[1] ? (
               <img
                 alt=""
-                className="h-full w-full object-cover opacity-84 grayscale brightness-90 contrast-110 saturate-75 md:opacity-74 md:brightness-80"
+                className="h-full w-full object-cover opacity-88 brightness-95 contrast-110 saturate-90 md:opacity-78 md:brightness-85 md:saturate-75"
                 src={heroImages[1]}
               />
             ) : null}
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-1000/58 via-ink-950/12 to-bone-50/6 md:from-ink-1000/68" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink-1000/52 via-ink-950/10 to-bone-50/6 md:from-ink-1000/62" />
           </div>
           <div className="absolute bottom-0 right-[10%] h-[34%] w-[38%] overflow-hidden border border-bone-50/18 bg-bone-50/8 shadow-[0_0_60px_rgb(255_255_255/0.08)] backdrop-blur-sm">
             {heroImages[2] ? (
               <img
                 alt=""
-                className="h-full w-full object-cover opacity-80 grayscale brightness-90 contrast-110 saturate-50 md:opacity-68 md:brightness-80"
+                className="h-full w-full object-cover opacity-86 brightness-95 contrast-110 saturate-80 md:opacity-74 md:brightness-85 md:saturate-65"
                 src={heroImages[2]}
               />
             ) : null}
-            <div className="absolute inset-0 bg-ink-1000/24 md:bg-ink-1000/36" />
+            <div className="absolute inset-0 bg-ink-1000/18 md:bg-ink-1000/30" />
           </div>
 
           <div className="absolute right-4 top-12 border surface-line bg-ink-1000/78 p-4 shadow-[0_22px_70px_rgb(0_0_0/0.35)] backdrop-blur-md sm:right-10">

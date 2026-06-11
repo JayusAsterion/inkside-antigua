@@ -96,15 +96,15 @@ export function ContactSection() {
 
             <div className="relative aspect-[4/3] overflow-hidden border surface-line bg-ink-1000 sm:aspect-[16/10] xl:min-h-[34rem]">
               <iframe
-                className="h-full w-full grayscale invert-[0.88] contrast-110 opacity-78"
+                className="h-full w-full brightness-90 contrast-105 saturate-75 opacity-90"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 src={siteData.contactInfo.mapEmbedUrl}
                 title="Mapa de Inkside Antigua"
               />
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_42%,rgba(2,2,2,0.55)_100%)]" />
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-ink-1000/72 to-transparent" />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ink-1000/82 to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(2,2,2,0.32)_100%)]" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-ink-1000/44 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ink-1000/56 to-transparent" />
             </div>
 
             <div className="mt-5 flex flex-col gap-4 border surface-line bg-ink-1000/62 p-5 sm:flex-row sm:items-center sm:justify-between">

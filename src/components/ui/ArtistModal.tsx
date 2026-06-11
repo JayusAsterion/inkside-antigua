@@ -69,11 +69,11 @@ export function ArtistModal({
               {image ? (
                 <img
                   alt={`${artist.name} profile`}
-                  className="absolute inset-0 h-full w-full object-cover opacity-90 grayscale brightness-90 contrast-110 saturate-75"
+                  className="absolute inset-0 h-full w-full object-cover opacity-95 brightness-100 contrast-105 saturate-90"
                   src={image}
                 />
               ) : null}
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-1000/72 via-ink-950/16 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-1000/54 via-ink-950/8 to-transparent" />
               <div className="absolute left-6 top-6 font-display text-7xl uppercase leading-none text-bone-50/14 sm:text-8xl">
                 {String(index + 1).padStart(2, '0')}
               </div>

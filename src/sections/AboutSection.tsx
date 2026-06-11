@@ -40,18 +40,18 @@ export function AboutSection() {
           {aboutImages.main ? (
             <img
               alt=""
-              className="absolute inset-0 h-full w-full object-cover opacity-68 grayscale brightness-90 contrast-110 transition duration-700 group-hover:scale-[1.03] group-hover:brightness-100 md:opacity-58 md:brightness-75 md:group-hover:brightness-90"
+              className="absolute inset-0 h-full w-full object-cover opacity-72 brightness-95 contrast-110 saturate-90 transition duration-700 group-hover:scale-[1.03] group-hover:brightness-100 group-hover:saturate-100 md:opacity-62 md:brightness-85 md:saturate-75 md:group-hover:brightness-95"
               src={aboutImages.main}
             />
           ) : null}
-          <div className="absolute inset-0 bg-gradient-to-br from-ink-1000/46 via-ink-950/22 to-ink-1000/62 md:from-ink-1000/58 md:to-ink-1000/72" />
+          <div className="absolute inset-0 bg-gradient-to-br from-ink-1000/38 via-ink-950/18 to-ink-1000/56 md:from-ink-1000/50 md:to-ink-1000/66" />
           <div className="absolute inset-0 texture-grid opacity-24 md:opacity-30" />
 
           <div className="absolute left-8 top-8 h-40 w-40 overflow-hidden border border-bone-50/12 bg-ink-1000/45 shadow-[0_22px_70px_rgb(0_0_0/0.34)]">
             {aboutImages.topLeft ? (
               <img
                 alt=""
-                className="h-full w-full object-cover opacity-88 grayscale brightness-95 contrast-110 transition duration-500 hover:scale-105 hover:brightness-100 md:opacity-78 md:brightness-85"
+                className="h-full w-full object-cover opacity-92 brightness-100 contrast-110 saturate-90 transition duration-500 hover:scale-105 hover:brightness-105 hover:saturate-100 md:opacity-82 md:brightness-90 md:saturate-80"
                 src={aboutImages.topLeft}
               />
             ) : null}
@@ -62,7 +62,7 @@ export function AboutSection() {
             {aboutImages.floating ? (
               <img
                 alt=""
-                className="h-full w-full object-cover opacity-88 grayscale brightness-95 contrast-110 transition duration-500 hover:scale-105 hover:brightness-100 md:opacity-80 md:brightness-85"
+                className="h-full w-full object-cover opacity-92 brightness-100 contrast-110 saturate-90 transition duration-500 hover:scale-105 hover:brightness-105 hover:saturate-100 md:opacity-84 md:brightness-90 md:saturate-80"
                 src={aboutImages.floating}
               />
             ) : null}
@@ -73,11 +73,11 @@ export function AboutSection() {
             {aboutImages.vertical ? (
               <img
                 alt=""
-                className="h-full w-full object-cover opacity-90 grayscale brightness-90 contrast-110 transition duration-500 hover:scale-105 hover:brightness-100 md:opacity-82 md:brightness-80"
+                className="h-full w-full object-cover opacity-92 brightness-95 contrast-110 saturate-90 transition duration-500 hover:scale-105 hover:brightness-105 hover:saturate-100 md:opacity-86 md:brightness-85 md:saturate-75"
                 src={aboutImages.vertical}
               />
             ) : null}
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-1000/30 via-transparent to-ink-1000/12 md:from-ink-1000/42 md:to-ink-1000/18" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink-1000/24 via-transparent to-ink-1000/10 md:from-ink-1000/36 md:to-ink-1000/16" />
           </div>
 
           <div className="absolute bottom-8 left-8 right-8 grid gap-3 sm:grid-cols-3">

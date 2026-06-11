@@ -65,7 +65,7 @@ export function ImageLightbox({
               <div className="relative flex min-h-[60svh] items-center justify-center bg-ink-1000 p-3 sm:p-5">
                 <img
                   alt={title}
-                  className="max-h-[72svh] w-full object-contain"
+                  className="max-h-[72svh] w-full object-contain brightness-100 contrast-105 saturate-90"
                   src={image}
                 />
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_64%,rgba(2,2,2,0.22)_100%)]" />
