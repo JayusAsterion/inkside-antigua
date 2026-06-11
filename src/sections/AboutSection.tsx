@@ -2,8 +2,16 @@ import { Section } from '../components/layout/Section'
 import { Badge } from '../components/ui/Badge'
 import { SectionTitle } from '../components/ui/SectionTitle'
 import { siteData } from '../data/siteData'
+import { getTattooImage } from '../data/tattooImages'
 
 export function AboutSection() {
+  const aboutImages = {
+    floating: getTattooImage(1),
+    main: getTattooImage(4),
+    topLeft: getTattooImage(3),
+    vertical: getTattooImage(0),
+  }
+
   return (
     <Section className="bg-ink-1000/72" id="estudio">
       <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(24rem,1.05fr)] lg:items-center">
@@ -28,11 +36,49 @@ export function AboutSection() {
           </div>
         </div>
 
-        <div className="relative min-h-[30rem] overflow-hidden border surface-line ink-gradient texture-vignette">
-          <div className="absolute inset-0 texture-grid opacity-35" />
-          <div className="absolute left-8 top-8 h-40 w-40 border border-bone-50/12 bg-ink-1000/45" />
-          <div className="absolute bottom-8 right-8 h-52 w-44 border border-bone-50/18 bg-bone-50/8 backdrop-blur-sm" />
-          <div className="absolute right-10 top-12 h-64 w-52 border surface-line metal-sheen" />
+        <div className="group relative min-h-[30rem] overflow-hidden border surface-line ink-gradient texture-vignette">
+          {aboutImages.main ? (
+            <img
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover opacity-68 grayscale brightness-90 contrast-110 transition duration-700 group-hover:scale-[1.03] group-hover:brightness-100 md:opacity-58 md:brightness-75 md:group-hover:brightness-90"
+              src={aboutImages.main}
+            />
+          ) : null}
+          <div className="absolute inset-0 bg-gradient-to-br from-ink-1000/46 via-ink-950/22 to-ink-1000/62 md:from-ink-1000/58 md:to-ink-1000/72" />
+          <div className="absolute inset-0 texture-grid opacity-24 md:opacity-30" />
+
+          <div className="absolute left-8 top-8 h-40 w-40 overflow-hidden border border-bone-50/12 bg-ink-1000/45 shadow-[0_22px_70px_rgb(0_0_0/0.34)]">
+            {aboutImages.topLeft ? (
+              <img
+                alt=""
+                className="h-full w-full object-cover opacity-88 grayscale brightness-95 contrast-110 transition duration-500 hover:scale-105 hover:brightness-100 md:opacity-78 md:brightness-85"
+                src={aboutImages.topLeft}
+              />
+            ) : null}
+            <div className="absolute inset-0 bg-ink-1000/12 md:bg-ink-1000/18" />
+          </div>
+
+          <div className="absolute bottom-8 right-8 h-52 w-44 overflow-hidden border border-bone-50/18 bg-bone-50/8 shadow-[0_22px_80px_rgb(0_0_0/0.4)] backdrop-blur-sm">
+            {aboutImages.floating ? (
+              <img
+                alt=""
+                className="h-full w-full object-cover opacity-88 grayscale brightness-95 contrast-110 transition duration-500 hover:scale-105 hover:brightness-100 md:opacity-80 md:brightness-85"
+                src={aboutImages.floating}
+              />
+            ) : null}
+            <div className="absolute inset-0 bg-ink-1000/14 md:bg-ink-1000/20" />
+          </div>
+
+          <div className="absolute right-10 top-12 h-64 w-52 overflow-hidden border surface-line bg-ink-1000/40 shadow-[0_22px_90px_rgb(0_0_0/0.42)]">
+            {aboutImages.vertical ? (
+              <img
+                alt=""
+                className="h-full w-full object-cover opacity-90 grayscale brightness-90 contrast-110 transition duration-500 hover:scale-105 hover:brightness-100 md:opacity-82 md:brightness-80"
+                src={aboutImages.vertical}
+              />
+            ) : null}
+            <div className="absolute inset-0 bg-gradient-to-t from-ink-1000/30 via-transparent to-ink-1000/12 md:from-ink-1000/42 md:to-ink-1000/18" />
+          </div>
 
           <div className="absolute bottom-8 left-8 right-8 grid gap-3 sm:grid-cols-3">
             {siteData.about.labels.map((label) => (

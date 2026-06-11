@@ -60,15 +60,15 @@ export function GallerySection() {
               {image ? (
                 <img
                   alt={`${item.category}: ${item.title}`}
-                  className="absolute inset-0 h-full w-full object-cover opacity-78 grayscale contrast-110 saturate-75 transition duration-500 group-hover:scale-105 group-hover:opacity-90 group-hover:saturate-90"
+                  className="absolute inset-0 h-full w-full object-cover opacity-92 grayscale brightness-90 contrast-110 saturate-75 transition duration-500 group-hover:scale-105 group-hover:opacity-100 group-hover:brightness-100 group-hover:saturate-90 md:opacity-84 md:brightness-80"
                   src={image}
                 />
               ) : (
                 <div className="absolute inset-0 ink-gradient texture-vignette transition duration-500 group-hover:scale-105 group-hover:opacity-90" />
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-1000 via-ink-950/42 to-ink-1000/18" />
-              <div className="absolute inset-0 texture-grid opacity-18" />
-              <div className="absolute inset-0 bg-bone-50/0 transition duration-300 group-hover:bg-bone-50/8" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-1000/72 via-ink-950/18 to-ink-1000/6 md:from-ink-1000/82 md:via-ink-950/26" />
+              <div className="absolute inset-0 texture-grid opacity-12 md:opacity-16" />
+              <div className="absolute inset-0 bg-bone-50/0 transition duration-300 group-hover:bg-bone-50/5" />
               <div className="absolute inset-x-6 top-6 flex items-center justify-between gap-4">
                 <Badge className="bg-ink-1000/65">{item.category}</Badge>
                 <span className="text-xs font-extrabold uppercase tracking-[0.22em] text-bone-200/45">

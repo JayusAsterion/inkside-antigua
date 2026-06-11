@@ -1,5 +1,6 @@
 import { ArrowUpRight, Sparkles } from 'lucide-react'
 import { motion } from 'motion/react'
+import inksideLogo from '../assets/images/brand/inkside-logo.png'
 import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
 import { Container } from '../components/ui/Container'
@@ -76,32 +77,38 @@ export function HeroSection() {
             {heroImages[0] ? (
               <img
                 alt=""
-                className="h-full w-full object-cover opacity-72 grayscale contrast-110 saturate-75"
+                className="h-full w-full object-cover opacity-88 grayscale brightness-90 contrast-110 saturate-75 md:opacity-78 md:brightness-80"
                 src={heroImages[0]}
               />
             ) : null}
-            <div className="absolute inset-0 bg-gradient-to-br from-ink-1000/24 via-bone-50/8 to-ink-1000/78" />
-            <div className="absolute inset-0 texture-grid opacity-20" />
+            <div className="absolute inset-0 bg-gradient-to-br from-ink-1000/18 via-bone-50/6 to-ink-1000/58 md:to-ink-1000/68" />
+            <div className="absolute inset-0 texture-grid opacity-14 md:opacity-18" />
+            <img
+              alt=""
+              aria-hidden="true"
+              className="absolute right-6 top-6 h-24 w-24 object-contain opacity-18 grayscale mix-blend-screen sm:h-32 sm:w-32"
+              src={inksideLogo}
+            />
           </div>
           <div className="absolute bottom-8 left-0 h-[46%] w-[52%] overflow-hidden border surface-line metal-sheen">
             {heroImages[1] ? (
               <img
                 alt=""
-                className="h-full w-full object-cover opacity-66 grayscale contrast-110 saturate-75"
+                className="h-full w-full object-cover opacity-84 grayscale brightness-90 contrast-110 saturate-75 md:opacity-74 md:brightness-80"
                 src={heroImages[1]}
               />
             ) : null}
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-1000/76 via-ink-950/18 to-bone-50/8" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink-1000/58 via-ink-950/12 to-bone-50/6 md:from-ink-1000/68" />
           </div>
           <div className="absolute bottom-0 right-[10%] h-[34%] w-[38%] overflow-hidden border border-bone-50/18 bg-bone-50/8 shadow-[0_0_60px_rgb(255_255_255/0.08)] backdrop-blur-sm">
             {heroImages[2] ? (
               <img
                 alt=""
-                className="h-full w-full object-cover opacity-58 grayscale contrast-125 saturate-50"
+                className="h-full w-full object-cover opacity-80 grayscale brightness-90 contrast-110 saturate-50 md:opacity-68 md:brightness-80"
                 src={heroImages[2]}
               />
             ) : null}
-            <div className="absolute inset-0 bg-ink-1000/46" />
+            <div className="absolute inset-0 bg-ink-1000/24 md:bg-ink-1000/36" />
           </div>
 
           <div className="absolute right-4 top-12 border surface-line bg-ink-1000/78 p-4 shadow-[0_22px_70px_rgb(0_0_0/0.35)] backdrop-blur-md sm:right-10">

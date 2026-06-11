@@ -68,7 +68,7 @@ export function ImageLightbox({
                   className="max-h-[72svh] w-full object-contain"
                   src={image}
                 />
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_52%,rgba(2,2,2,0.58)_100%)]" />
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_64%,rgba(2,2,2,0.22)_100%)]" />
               </div>
 
               <aside className="relative border-t surface-line bg-ink-1000/92 p-5 lg:border-l lg:border-t-0">

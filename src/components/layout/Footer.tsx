@@ -1,4 +1,5 @@
 import { ArrowUpRight } from 'lucide-react'
+import inksideLogo from '../../assets/images/brand/inkside-logo.png'
 import { siteData } from '../../data/siteData'
 import { Container } from '../ui/Container'
 
@@ -9,15 +10,27 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto_auto] lg:items-start">
           <div>
             <a
-              className="font-display text-4xl uppercase leading-none tracking-wide text-bone-50 transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50"
+              className="group inline-flex flex-col items-start gap-4 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50 sm:flex-row sm:items-center sm:gap-5"
               href="#inicio"
+              aria-label="Inkside Antigua"
             >
-              {siteData.shortName}
+              <span className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full border border-bone-50/10 bg-black/30 p-2.5 backdrop-blur transition group-hover:border-bone-50/24 group-hover:bg-bone-50/6">
+                <img
+                  alt="Inkside Antigua"
+                  className="h-full w-full object-contain opacity-95 transition group-hover:opacity-100"
+                  src={inksideLogo}
+                />
+              </span>
+              <span>
+                <span className="block font-display text-4xl uppercase leading-none tracking-wide text-bone-50 transition group-hover:text-white">
+                  {siteData.name}
+                </span>
+                <span className="mt-2 block text-xs font-extrabold uppercase tracking-[0.18em] text-bone-200/58">
+                  {siteData.tagline}
+                </span>
+              </span>
             </a>
-            <p className="mt-4 text-xs font-extrabold uppercase tracking-[0.18em] text-bone-200/58">
-              {siteData.tagline}
-            </p>
-            <p className="mt-2 text-bone-200/58">{siteData.location}</p>
+            <p className="mt-4 text-bone-200/58">{siteData.location}</p>
           </div>
 
           <nav className="grid gap-3 text-xs font-extrabold uppercase tracking-[0.18em]">
