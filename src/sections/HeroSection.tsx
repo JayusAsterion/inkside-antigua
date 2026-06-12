@@ -4,12 +4,13 @@ import inksideLogo from '../assets/images/brand/inkside-logo.png'
 import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
 import { Container } from '../components/ui/Container'
-import { siteData } from '../data/siteData'
+import { useLanguage } from '../context/useLanguage'
 import { getTattooImage } from '../data/tattooImages'
 import { fadeInUp, staggerContainer } from '../lib/animations'
 
 export function HeroSection() {
   const heroImages = [getTattooImage(0), getTattooImage(1), getTattooImage(2)]
+  const { t } = useLanguage()
 
   return (
     <section
@@ -27,21 +28,21 @@ export function HeroSection() {
           initial="hidden"
           variants={staggerContainer}
         >
-          <Badge>{siteData.hero.eyebrow}</Badge>
+          <Badge>{t.hero.badge}</Badge>
 
           <motion.p
             className="mt-6 flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.28em] text-bone-200/68"
             variants={fadeInUp}
           >
             <Sparkles aria-hidden className="h-4 w-4 text-bone-100/82" />
-            {siteData.hero.subtitle}
+            {t.hero.eyebrow}
           </motion.p>
 
           <motion.h1
             className="mt-5 max-w-5xl text-balance font-display text-[clamp(4.6rem,17vw,13.5rem)] uppercase leading-[0.78] text-bone-50"
             variants={fadeInUp}
           >
-            Arte permanente
+            {t.hero.title}
           </motion.h1>
 
           <motion.div
@@ -49,15 +50,15 @@ export function HeroSection() {
             variants={fadeInUp}
           >
             <p className="max-w-xl text-lg leading-8 text-bone-200/78 sm:text-xl">
-              {siteData.hero.statement}. Un lenguaje visual para piel, metal y memoria en el corazón de Antigua Guatemala.
+              {t.hero.description}
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button href="#contacto">
-                {siteData.ctas.primary}
+                {t.hero.primaryCta}
                 <ArrowUpRight aria-hidden className="ml-2 h-4 w-4" />
               </Button>
               <Button href="#galeria" variant="secondary">
-                Ver galería
+                {t.hero.secondaryCta}
               </Button>
             </div>
           </motion.div>
@@ -70,7 +71,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="absolute left-0 top-8 hidden text-[0.68rem] font-extrabold uppercase tracking-[0.34em] text-bone-200/45 [writing-mode:vertical-rl] lg:block">
-            Inkside / Antigua / Studio
+            {t.hero.verticalText}
           </div>
 
           <div className="absolute right-0 top-0 h-[72%] w-[76%] overflow-hidden border surface-line ink-gradient texture-vignette">
@@ -113,10 +114,10 @@ export function HeroSection() {
 
           <div className="absolute right-4 top-12 border surface-line bg-ink-1000/78 p-4 shadow-[0_22px_70px_rgb(0_0_0/0.35)] backdrop-blur-md sm:right-10">
             <p className="text-[0.65rem] font-extrabold uppercase tracking-[0.22em] text-bone-100/82">
-              Studio focus
+              {t.hero.focus}
             </p>
             <div className="mt-4 grid gap-2">
-              {siteData.hero.specialties.map((item) => (
+              {t.hero.specialties.map((item) => (
                 <span
                   className="border border-bone-50/10 bg-bone-50/6 px-3 py-2 font-display text-2xl uppercase leading-none text-bone-50 transition hover:border-bone-50/35 hover:bg-bone-50/10"
                   key={item}
@@ -129,10 +130,10 @@ export function HeroSection() {
 
           <div className="absolute bottom-14 left-6 right-0 overflow-hidden border-y surface-line bg-ink-1000/72 py-3 backdrop-blur-sm">
             <div className="marquee-track flex w-max gap-8 whitespace-nowrap text-xs font-extrabold uppercase tracking-[0.28em] text-bone-200/60">
-              <span>{siteData.hero.marquee}</span>
-              <span>{siteData.hero.marquee}</span>
-              <span>{siteData.hero.marquee}</span>
-              <span>{siteData.hero.marquee}</span>
+              <span>{t.hero.marquee}</span>
+              <span>{t.hero.marquee}</span>
+              <span>{t.hero.marquee}</span>
+              <span>{t.hero.marquee}</span>
             </div>
           </div>
         </motion.div>

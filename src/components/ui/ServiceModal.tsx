@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
 import { ArrowUpRight, Check, Info, Sparkles, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
-import type { Service } from '../../data/siteData'
+import { useLanguage } from '../../context/useLanguage'
 import { siteData } from '../../data/siteData'
+import type { ServiceTranslation } from '../../i18n/translations'
 import { Button } from './Button'
 
 type ServiceModalProps = {
@@ -10,7 +11,7 @@ type ServiceModalProps = {
   index?: number
   isOpen: boolean
   onClose: () => void
-  service?: Service
+  service?: ServiceTranslation
 }
 
 function DetailList({
@@ -19,7 +20,7 @@ function DetailList({
   title,
 }: {
   icon: 'check' | 'sparkles'
-  items: string[]
+  items: readonly string[]
   title: string
 }) {
   const Icon = icon === 'check' ? Check : Sparkles
@@ -49,6 +50,8 @@ export function ServiceModal({
   onClose,
   service,
 }: ServiceModalProps) {
+  const { t } = useLanguage()
+
   useEffect(() => {
     if (!isOpen) {
       return
@@ -118,7 +121,7 @@ export function ServiceModal({
 
             <aside className="relative p-6 sm:p-8 lg:p-10">
               <p className="text-[0.68rem] font-extrabold uppercase tracking-[0.24em] text-bone-200/58">
-                Service profile / Inkside Antigua
+                {t.serviceModal.profile}
               </p>
               <h2
                 className="mt-5 max-w-2xl font-display text-6xl uppercase leading-[0.82] text-bone-50 sm:text-7xl"
@@ -143,14 +146,14 @@ export function ServiceModal({
               </div>
 
               <div className="mt-8 grid gap-4 xl:grid-cols-2">
-                <DetailList icon="sparkles" items={service.idealFor} title="Ideal para" />
-                <DetailList icon="check" items={service.includes} title="Que incluye" />
+                <DetailList icon="sparkles" items={service.idealFor} title={t.serviceModal.idealFor} />
+                <DetailList icon="check" items={service.includes} title={t.serviceModal.includes} />
               </div>
 
               <div className="mt-4 border surface-line bg-ink-950/72 p-5">
                 <p className="flex items-center gap-2 text-[0.68rem] font-extrabold uppercase tracking-[0.22em] text-bone-100/82">
                   <Info aria-hidden className="h-3.5 w-3.5" />
-                  Antes de reservar
+                  {t.serviceModal.beforeBooking}
                 </p>
                 <p className="mt-4 text-sm leading-7 text-bone-200/70">
                   {service.recommendation}
@@ -159,17 +162,17 @@ export function ServiceModal({
 
               <div className="mt-8 flex flex-col gap-4 border-t surface-line pt-6 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-bone-200/45">
-                  Inkside Antigua / Tattoo Studio
+                  {t.serviceModal.studio}
                 </p>
                 <Button className="w-full sm:w-auto" href={siteData.social.instagram}>
-                  Cotizar este servicio
+                  {t.serviceModal.cta}
                   <ArrowUpRight aria-hidden className="ml-2 h-4 w-4" />
                 </Button>
               </div>
             </aside>
 
             <button
-              aria-label="Cerrar ficha del servicio"
+              aria-label={t.serviceModal.close}
               className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center border border-bone-50/15 bg-ink-1000/78 text-bone-50 backdrop-blur transition hover:border-bone-50/45 hover:bg-bone-50/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50"
               onClick={onClose}
               type="button"

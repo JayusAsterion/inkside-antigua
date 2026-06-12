@@ -3,10 +3,13 @@ import { motion } from 'motion/react'
 import { Section } from '../components/layout/Section'
 import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
+import { useLanguage } from '../context/useLanguage'
 import { siteData } from '../data/siteData'
 import { cardReveal, fadeInUp, staggerContainer, viewportReveal } from '../lib/animations'
 
 export function ContactSection() {
+  const { t } = useLanguage()
+
   return (
     <Section className="bg-ink-950" id="contacto">
       <div className="grid gap-10 xl:grid-cols-[minmax(0,0.9fr)_minmax(28rem,1.1fr)] xl:items-stretch">
@@ -18,28 +21,28 @@ export function ContactSection() {
           whileInView="visible"
         >
           <div>
-            <Badge>Reservas</Badge>
+            <Badge>{t.contact.eyebrow}</Badge>
             <motion.h2
               className="mt-6 max-w-5xl text-balance font-display text-6xl uppercase leading-[0.82] text-bone-50 sm:text-7xl lg:text-8xl"
               variants={fadeInUp}
             >
-              {siteData.contactInfo.title}
+              {t.contact.title}
             </motion.h2>
             <motion.p
               className="mt-7 max-w-2xl text-lg leading-8 text-bone-200/74"
               variants={fadeInUp}
             >
-              {siteData.contactInfo.description}
+              {t.contact.description}
             </motion.p>
 
             <motion.div className="mt-9 flex flex-col gap-3 sm:flex-row" variants={fadeInUp}>
-              <Button aria-label="Reservar por Instagram" href={siteData.social.instagram}>
+              <Button aria-label={t.contact.instagramCta} href={siteData.social.instagram}>
                 <Calendar aria-hidden className="mr-2 h-4 w-4" />
-                Reservar por Instagram
+                {t.contact.instagramCta}
                 <ArrowUpRight aria-hidden className="ml-2 h-4 w-4" />
               </Button>
               <Button href={siteData.social.facebook} variant="secondary">
-                Contactar por Facebook
+                {t.contact.facebookCta}
                 <ArrowUpRight aria-hidden className="ml-2 h-4 w-4" />
               </Button>
             </motion.div>
@@ -49,14 +52,14 @@ export function ContactSection() {
             className="mt-10 grid gap-4 sm:grid-cols-3 xl:mt-14"
             variants={staggerContainer}
           >
-            {siteData.contactInfo.details.map((detail) => (
+            {t.contact.details.map((detail) => (
               <motion.div
                 className="border surface-line bg-bone-50/5 p-5"
                 key={detail.label}
                 variants={cardReveal}
               >
                 <p className="text-[0.68rem] font-extrabold uppercase tracking-[0.22em] text-bone-100/82">
-                  {detail.label === 'Ubicación' ? (
+                  {detail.label === t.contact.details[0].label ? (
                     <MapPin aria-hidden className="mr-2 inline h-3.5 w-3.5" />
                   ) : null}
                   {detail.label}
@@ -69,7 +72,7 @@ export function ContactSection() {
           </motion.div>
 
           <p className="mt-6 border-l border-bone-50/24 pl-4 text-sm leading-7 text-bone-200/68">
-            {siteData.contactInfo.note}
+            {t.contact.note}
           </p>
         </motion.div>
 
@@ -87,10 +90,10 @@ export function ContactSection() {
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <Badge>
                 <Sparkles aria-hidden className="mr-2 h-3.5 w-3.5" />
-                Booking / Location / Custom ink
+                {t.contact.mapBadge}
               </Badge>
               <span className="text-[0.68rem] font-extrabold uppercase tracking-[0.24em] text-bone-200/45">
-                Antigua Guatemala
+                {t.contact.mapLocation}
               </span>
             </div>
 
@@ -100,7 +103,7 @@ export function ContactSection() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 src={siteData.contactInfo.mapEmbedUrl}
-                title="Mapa de Inkside Antigua"
+                title={t.contact.mapTitle}
               />
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(2,2,2,0.32)_100%)]" />
               <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-ink-1000/44 to-transparent" />
@@ -110,14 +113,14 @@ export function ContactSection() {
             <div className="mt-5 flex flex-col gap-4 border surface-line bg-ink-1000/62 p-5 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-[0.68rem] font-extrabold uppercase tracking-[0.22em] text-bone-100/82">
-                  Ubicación temporal
+                  {t.contact.temporaryLocation}
                 </p>
                 <p className="mt-2 font-display text-3xl uppercase leading-none text-bone-50">
                   Inkside Antigua
                 </p>
               </div>
               <Button href={siteData.contactInfo.mapSearchUrl} variant="secondary">
-                Abrir en Google Maps
+                {t.contact.mapCta}
                 <ArrowUpRight aria-hidden className="ml-2 h-4 w-4" />
               </Button>
             </div>

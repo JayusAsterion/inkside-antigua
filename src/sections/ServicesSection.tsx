@@ -6,67 +6,46 @@ import { Section } from '../components/layout/Section'
 import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
 import { ServiceModal } from '../components/ui/ServiceModal'
-import { siteData } from '../data/siteData'
+import { useLanguage } from '../context/useLanguage'
 import { getTattooImage } from '../data/tattooImages'
-import { cardReveal, scaleOnHover, staggerContainer, viewportReveal } from '../lib/animations'
+import { cardReveal, scaleOnHover, staggerContainer } from '../lib/animations'
 import { cn } from '../lib/utils'
 
 type ServiceCardTone = 'silver' | 'white' | 'steel'
 
 type ServiceVisual = {
-  accentText: string
   className: string
   composition: 'hero' | 'vertical' | 'horizontal' | 'compact'
-  label: string
-  name: string
   tone: ServiceCardTone
 }
 
 const serviceVisuals: ServiceVisual[] = [
   {
-    name: 'Tatuajes personalizados',
-    label: 'Custom',
-    accentText: 'INK',
     composition: 'hero',
     tone: 'silver',
     className: 'md:col-span-2 xl:col-span-7 xl:row-span-2 min-h-[29rem] xl:min-h-[38rem]',
   },
   {
-    name: 'Fine line',
-    label: 'Linework',
-    accentText: 'FINE',
     composition: 'compact',
     tone: 'white',
     className: 'md:col-span-1 xl:col-span-5 min-h-[18rem]',
   },
   {
-    name: 'Blackwork',
-    label: 'Blackwork',
-    accentText: 'BLACK',
     composition: 'vertical',
     tone: 'silver',
     className: 'md:col-span-1 xl:col-span-5 xl:row-span-2 min-h-[30rem] xl:min-h-[38rem]',
   },
   {
-    name: 'Piercings',
-    label: 'Piercing',
-    accentText: 'METAL',
     composition: 'compact',
     tone: 'steel',
     className: 'md:col-span-1 xl:col-span-4 min-h-[18rem]',
   },
   {
-    name: 'Cover ups',
-    label: 'Cover',
-    accentText: 'REWORK',
     composition: 'compact',
     tone: 'silver',
     className: 'md:col-span-1 xl:col-span-4 min-h-[18rem]',
   },
   {
-    name: 'Diseño personalizado',
-    label: 'Antigua',
-    accentText: 'CUSTOM DESIGN',
     composition: 'horizontal',
     tone: 'white',
     className: 'md:col-span-2 xl:col-span-8 min-h-[22rem]',
@@ -79,14 +58,11 @@ const toneClass: Record<ServiceCardTone, string> = {
   steel: 'from-steel-500/12 via-ink-850/64 to-ink-1000/86 group-hover:border-steel-500/45',
 }
 
-function getServiceVisual(name: string) {
-  return serviceVisuals.find((visual) => visual.name === name)
-}
-
 export function ServicesSection() {
   const [selectedServiceIndex, setSelectedServiceIndex] = useState<number | null>(null)
+  const { t } = useLanguage()
   const selectedService =
-    selectedServiceIndex === null ? undefined : siteData.services[selectedServiceIndex]
+    selectedServiceIndex === null ? undefined : t.services[selectedServiceIndex]
   const selectedServiceImage =
     selectedServiceIndex === null || !selectedService
       ? undefined
@@ -95,12 +71,10 @@ export function ServicesSection() {
   return (
     <Section
       className="bg-ink-950"
-      description={
-        'Desde piezas minimalistas hasta composiciones más intensas, cada servicio está pensado para crear una experiencia visual y personal.'
-      }
-      eyebrow="Servicios"
+      description={t.servicesSection.description}
+      eyebrow={t.servicesSection.eyebrow}
       id="servicios"
-      title={'Servicios diseñados para convertir ideas en tinta.'}
+      title={t.servicesSection.title}
       titleAlign="center"
     >
       <div className="relative mt-12">
@@ -110,21 +84,20 @@ export function ServicesSection() {
         >
           <img
             alt=""
-            className="h-60 w-60 object-contain opacity-[0.08] grayscale mix-blend-screen 2xl:h-72 2xl:w-72"
+            className="h-60 w-60 object-contain opacity-70 2xl:h-72 2xl:w-72"
             src={inksideLogo}
           />
         </div>
 
         <motion.div
+          animate="visible"
           className="relative z-10 grid auto-rows-[minmax(16rem,auto)] grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-12"
-          initial="hidden"
+          initial={false}
           variants={staggerContainer}
-          viewport={viewportReveal}
-          whileInView="visible"
         >
-          {siteData.services.map((service, index) => {
-            const visual = getServiceVisual(service.name)
-            const image = getTattooImage(index)
+          {t.services.map((service, index) => {
+            const visual = serviceVisuals[index]
+            const image = getTattooImage(service.imageIndex)
 
             return (
               <motion.article
@@ -133,7 +106,7 @@ export function ServicesSection() {
                   visual?.className,
                   visual && toneClass[visual.tone],
                 )}
-                key={service.name}
+                key={service.id}
                 variants={cardReveal}
                 whileHover={scaleOnHover}
               >
@@ -160,7 +133,7 @@ export function ServicesSection() {
                     <span className="font-display text-6xl uppercase leading-none text-bone-50/14 md:text-7xl">
                       {String(index + 1).padStart(2, '0')}
                     </span>
-                    <Badge className="bg-ink-1000/62">{visual?.label ?? 'Ink'}</Badge>
+                    <Badge className="bg-ink-1000/62">{service.category}</Badge>
                   </div>
 
                   <div
@@ -179,7 +152,7 @@ export function ServicesSection() {
                           visual?.composition === 'hero' ? 'text-8xl sm:text-9xl' : 'text-6xl',
                         )}
                       >
-                        {visual?.accentText}
+                        {service.accentText}
                       </p>
                       <h3
                         className={cn(
@@ -205,7 +178,7 @@ export function ServicesSection() {
 
                   {image ? (
                     <button
-                      aria-label={`Ver ficha de ${service.name}`}
+                      aria-label={`${t.serviceModal.open} ${service.name}`}
                       className="absolute bottom-6 right-6 flex h-14 w-14 items-center justify-center border border-bone-50/12 bg-ink-1000/45 text-bone-50/62 backdrop-blur transition hover:-translate-y-0.5 hover:border-bone-50/45 hover:bg-bone-50/10 hover:text-bone-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50 sm:h-20 sm:w-20"
                       onClick={() =>
                         setSelectedServiceIndex(index)
@@ -216,7 +189,7 @@ export function ServicesSection() {
                     </button>
                   ) : null}
                   <div className="pointer-events-none absolute right-6 top-1/2 hidden -translate-y-1/2 text-[0.62rem] font-extrabold uppercase tracking-[0.32em] text-bone-200/28 [writing-mode:vertical-rl] xl:block">
-                    Tattoo studio / Antigua
+                    {t.servicesSection.verticalText}
                   </div>
                 </div>
               </motion.article>
@@ -227,7 +200,7 @@ export function ServicesSection() {
 
       <div className="mt-12 flex justify-center">
         <Button href="#contacto">
-          {siteData.ctas.primary}
+          {t.servicesSection.cta}
           <ArrowUpRight aria-hidden className="ml-2 h-4 w-4" />
         </Button>
       </div>

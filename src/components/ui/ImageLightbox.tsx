@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { ArrowUpRight, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
+import { useLanguage } from '../../context/useLanguage'
 
 type ImageLightboxProps = {
   category?: string
@@ -15,8 +16,10 @@ export function ImageLightbox({
   image,
   isOpen,
   onClose,
-  title = 'Imagen ampliada',
+  title,
 }: ImageLightboxProps) {
+  const { t } = useLanguage()
+
   useEffect(() => {
     if (!isOpen) {
       return
@@ -64,7 +67,7 @@ export function ImageLightbox({
             <div className="relative grid gap-0 lg:grid-cols-[minmax(0,1fr)_18rem]">
               <div className="relative flex min-h-[60svh] items-center justify-center bg-ink-1000 p-3 sm:p-5">
                 <img
-                  alt={title}
+                  alt={title ?? t.lightbox.titleFallback}
                   className="max-h-[72svh] w-full object-contain brightness-100 contrast-105 saturate-90"
                   src={image}
                 />
@@ -73,26 +76,26 @@ export function ImageLightbox({
 
               <aside className="relative border-t surface-line bg-ink-1000/92 p-5 lg:border-l lg:border-t-0">
                 <p className="text-[0.68rem] font-extrabold uppercase tracking-[0.24em] text-bone-100/82">
-                  {category ?? 'Inkside Antigua'}
+                  {category ?? t.lightbox.fallbackCategory}
                 </p>
                 <h2
                   className="mt-4 font-display text-5xl uppercase leading-[0.88] text-bone-50"
                   id="image-lightbox-title"
                 >
-                  {title}
+                  {title ?? t.lightbox.titleFallback}
                 </h2>
                 <p className="mt-5 border-l border-bone-50/24 pl-4 text-sm leading-7 text-bone-200/68">
-                  Inkside Antigua / Tattoo Studio
+                  {t.lightbox.studio}
                 </p>
                 <div className="mt-8 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.18em] text-bone-200/45">
-                  Ver pieza
+                  {t.lightbox.viewPiece}
                   <ArrowUpRight aria-hidden className="h-3.5 w-3.5" />
                 </div>
               </aside>
             </div>
 
             <button
-              aria-label="Cerrar imagen"
+              aria-label={t.lightbox.close}
               className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center border border-bone-50/15 bg-ink-1000/78 text-bone-50 backdrop-blur transition hover:border-bone-50/45 hover:bg-bone-50/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50"
               onClick={onClose}
               type="button"

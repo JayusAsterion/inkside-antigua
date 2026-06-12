@@ -2,14 +2,45 @@ import { useEffect, useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { motion } from 'motion/react'
 import inksideLogo from '../../assets/images/brand/inkside-logo.png'
-import { siteData } from '../../data/siteData'
+import { useLanguage } from '../../context/useLanguage'
+import type { Language } from '../../i18n/translations'
 import { cn } from '../../lib/utils'
 import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
 
+function LanguageSwitch({ className }: { className?: string }) {
+  const { language, setLanguage } = useLanguage()
+  const languages: Language[] = ['es', 'en']
+
+  return (
+    <div
+      aria-label="Language selector"
+      className={cn(
+        'inline-flex items-center rounded-sm border border-bone-50/12 bg-bone-50/5 p-1 text-[0.68rem] font-extrabold uppercase tracking-[0.16em]',
+        className,
+      )}
+    >
+      {languages.map((item) => (
+        <button
+          className={cn(
+            'px-2.5 py-1 transition hover:text-bone-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bone-50',
+            language === item ? 'bg-bone-50 text-ink-1000' : 'text-bone-200/48',
+          )}
+          key={item}
+          onClick={() => setLanguage(item)}
+          type="button"
+        >
+          {item}
+        </button>
+      ))}
+    </div>
+  )
+}
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const updateScrolled = () => setHasScrolled(window.scrollY > 20)
@@ -54,7 +85,7 @@ export function Navbar() {
         </a>
 
         <nav className="hidden items-center gap-7 justify-self-center text-xs font-extrabold uppercase tracking-[0.16em] text-bone-200/72 xl:flex">
-          {siteData.navItems.map((item) => (
+          {t.nav.items.map((item) => (
             <a
               className="relative transition hover:text-bone-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50 after:absolute after:-bottom-2 after:left-0 after:h-px after:w-0 after:bg-bone-50 after:transition-all hover:after:w-full"
               href={item.href}
@@ -65,16 +96,17 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden justify-self-end xl:block">
+        <div className="hidden items-center gap-3 justify-self-end xl:flex">
+          <LanguageSwitch />
           <Button href="#contacto">
-            {siteData.ctas.primary}
+            {t.nav.book}
             <ArrowUpRight aria-hidden className="ml-2 h-4 w-4" />
           </Button>
         </div>
 
         <button
           aria-expanded={isOpen}
-          aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-label={isOpen ? t.nav.closeMenu : t.nav.openMenu}
           className="flex h-11 w-11 shrink-0 items-center justify-center border border-bone-50/15 bg-bone-50/5 text-bone-50 transition hover:border-bone-50/45 hover:bg-bone-50/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50 xl:hidden"
           onClick={() => setIsOpen((current) => !current)}
           type="button"
@@ -92,7 +124,7 @@ export function Navbar() {
         >
           <Container className="py-5">
             <nav className="grid gap-2 text-sm font-extrabold uppercase tracking-[0.16em] text-bone-200">
-              {siteData.navItems.map((item) => (
+              {t.nav.items.map((item) => (
                 <a
                   className="border border-bone-50/10 bg-bone-50/5 px-4 py-3 transition hover:border-bone-50/45 hover:bg-bone-50/8 hover:text-bone-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50"
                   href={item.href}
@@ -103,8 +135,9 @@ export function Navbar() {
                 </a>
               ))}
             </nav>
+            <LanguageSwitch className="mt-4 w-full justify-center" />
             <Button className="mt-4 w-full" href="#contacto" onClick={() => setIsOpen(false)}>
-              {siteData.ctas.primary}
+              {t.nav.book}
               <ArrowUpRight aria-hidden className="ml-2 h-4 w-4" />
             </Button>
           </Container>

@@ -6,9 +6,10 @@ import { Button } from '../components/ui/Button'
 import { Badge } from '../components/ui/Badge'
 import { ImageLightbox } from '../components/ui/ImageLightbox'
 import { siteData } from '../data/siteData'
+import { useLanguage } from '../context/useLanguage'
 import { getTattooImage } from '../data/tattooImages'
 import { cn } from '../lib/utils'
-import { cardReveal, scaleOnHover, staggerContainer, viewportReveal } from '../lib/animations'
+import { cardReveal, scaleOnHover, staggerContainer } from '../lib/animations'
 
 type GalleryItemSize = 'large' | 'tall' | 'wide' | 'small'
 
@@ -20,6 +21,7 @@ const gallerySizeClass = {
 } satisfies Record<GalleryItemSize, string>
 
 export function GallerySection() {
+  const { t } = useLanguage()
   const [selectedImage, setSelectedImage] = useState<{
     category: string
     image: string
@@ -30,21 +32,20 @@ export function GallerySection() {
     <Section
       className="bg-ink-950"
       description={
-        'Una selecci\u00f3n visual inspirada en piezas personalizadas, l\u00edneas limpias, sombras intensas y detalles pensados para durar.'
+        t.gallerySection.description
       }
-      eyebrow={'Galer\u00eda'}
+      eyebrow={t.gallerySection.eyebrow}
       id="galeria"
-      title={'Galer\u00eda de piezas, tinta y detalle.'}
+      title={t.gallerySection.title}
       titleAlign="center"
     >
       <motion.div
+        animate="visible"
         className="mt-12 grid auto-rows-[18rem] gap-4 md:grid-cols-2 lg:grid-cols-4"
-        initial="hidden"
+        initial={false}
         variants={staggerContainer}
-        viewport={viewportReveal}
-        whileInView="visible"
       >
-        {siteData.galleryItems.map((item, index) => {
+        {t.galleryItems.map((item, index) => {
           const image = getTattooImage(index)
 
           return (
@@ -53,7 +54,7 @@ export function GallerySection() {
                 'group relative overflow-hidden border surface-line bg-bone-50/5 transition duration-300 hover:-translate-y-1 hover:border-bone-50/38',
                 gallerySizeClass[item.size as GalleryItemSize],
               )}
-              key={`${item.category}-${item.title}`}
+              key={`gallery-item-${index}`}
               variants={cardReveal}
               whileHover={scaleOnHover}
             >
@@ -78,7 +79,7 @@ export function GallerySection() {
               <div className="absolute bottom-6 left-6 right-6">
                 {image ? (
                   <button
-                    aria-label={`Ver imagen de ${item.title}`}
+                    aria-label={`${t.lightbox.open} ${item.title}`}
                     className="mb-5 flex h-16 w-24 items-center justify-center border border-bone-50/12 bg-ink-1000/35 text-bone-50/62 backdrop-blur transition hover:-translate-y-0.5 hover:border-bone-50/45 hover:bg-bone-50/10 hover:text-bone-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50"
                     onClick={() =>
                       setSelectedImage({
@@ -102,7 +103,7 @@ export function GallerySection() {
       </motion.div>
 
       <div className="mt-12 flex justify-center">
-        <Button href={siteData.social.instagram}>{'Ver m\u00e1s en Instagram'}</Button>
+        <Button href={siteData.social.instagram}>{t.gallerySection.cta}</Button>
       </div>
       <ImageLightbox
         category={selectedImage?.category}

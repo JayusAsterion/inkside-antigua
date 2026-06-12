@@ -1,18 +1,18 @@
 import { motion } from 'motion/react'
 import { Section } from '../components/layout/Section'
-import { siteData } from '../data/siteData'
+import { useLanguage } from '../context/useLanguage'
 import { cardReveal, scaleOnHover, staggerContainer, viewportReveal } from '../lib/animations'
 
 export function ProcessSection() {
+  const { t } = useLanguage()
+
   return (
     <Section
       className="bg-ink-1000/78"
-      description={
-        'Cada pieza pasa por un proceso pensado para que el resultado tenga intenci\u00f3n, est\u00e9tica y permanencia.'
-      }
-      eyebrow="Proceso"
+      description={t.processSection.description}
+      eyebrow={t.processSection.eyebrow}
       id="proceso"
-      title="Del concepto a la piel."
+      title={t.processSection.title}
     >
       <motion.div
         className="mt-12 grid gap-4 lg:grid-cols-4"
@@ -21,7 +21,7 @@ export function ProcessSection() {
         viewport={viewportReveal}
         whileInView="visible"
       >
-        {siteData.processSteps.map((step) => (
+        {t.processSteps.map((step) => (
           <motion.article
             className="group relative min-h-72 overflow-hidden border surface-line bg-bone-50/5 p-6 transition duration-300 hover:-translate-y-1 hover:border-bone-50/38 hover:bg-bone-50/8"
             key={step.number}
@@ -44,10 +44,10 @@ export function ProcessSection() {
 
       <div className="mt-12 overflow-hidden border-y surface-line bg-ink-1000/70 py-3">
         <div className="marquee-track flex w-max gap-8 whitespace-nowrap text-xs font-extrabold uppercase tracking-[0.28em] text-bone-200/55">
-          <span>Custom ink / Piercing / Antigua Guatemala /</span>
-          <span>Custom ink / Piercing / Antigua Guatemala /</span>
-          <span>Custom ink / Piercing / Antigua Guatemala /</span>
-          <span>Custom ink / Piercing / Antigua Guatemala /</span>
+          <span>{t.processSection.marquee}</span>
+          <span>{t.processSection.marquee}</span>
+          <span>{t.processSection.marquee}</span>
+          <span>{t.processSection.marquee}</span>
         </div>
       </div>
     </Section>

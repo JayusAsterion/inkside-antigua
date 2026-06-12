@@ -4,14 +4,15 @@ import { motion } from 'motion/react'
 import { Section } from '../components/layout/Section'
 import { ArtistModal } from '../components/ui/ArtistModal'
 import { Badge } from '../components/ui/Badge'
-import { siteData } from '../data/siteData'
+import { useLanguage } from '../context/useLanguage'
 import { getTattooImage } from '../data/tattooImages'
 import { cardReveal, scaleOnHover, staggerContainer, viewportReveal } from '../lib/animations'
 
 export function ArtistsSection() {
   const [selectedArtistIndex, setSelectedArtistIndex] = useState<number | null>(null)
+  const { t } = useLanguage()
   const selectedArtist =
-    selectedArtistIndex === null ? undefined : siteData.artists[selectedArtistIndex]
+    selectedArtistIndex === null ? undefined : t.artists[selectedArtistIndex]
   const selectedArtistImage =
     selectedArtistIndex === null || !selectedArtist
       ? undefined
@@ -20,12 +21,10 @@ export function ArtistsSection() {
   return (
     <Section
       className="bg-ink-1000/76"
-      description={
-        'Cada pieza nace desde una conversaci\u00f3n, una referencia visual y una intenci\u00f3n clara: crear arte con identidad.'
-      }
-      eyebrow="Artistas"
+      eyebrow={t.artistsSection.eyebrow}
       id="artistas"
-      title="Artistas que convierten ideas en piezas permanentes."
+      title={t.artistsSection.title}
+      description={t.artistsSection.description}
     >
       <motion.div
         className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3"
@@ -34,7 +33,7 @@ export function ArtistsSection() {
         viewport={viewportReveal}
         whileInView="visible"
       >
-        {siteData.artists.map((artist, index) => {
+        {t.artists.map((artist, index) => {
           const image = getTattooImage(artist.imageIndex)
 
           return (
@@ -58,7 +57,7 @@ export function ArtistsSection() {
                   {String(index + 1).padStart(2, '0')}
                 </div>
                 <motion.button
-                  aria-label={`Ver perfil de ${artist.name}`}
+                  aria-label={`${t.artistModal.open} ${artist.name}`}
                   className="absolute bottom-6 right-6 z-10 flex h-16 w-20 items-center justify-center border border-bone-50/14 bg-ink-1000/45 text-bone-50/64 backdrop-blur transition hover:-translate-y-0.5 hover:border-bone-50/45 hover:bg-bone-50/10 hover:text-bone-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50 group-hover:border-bone-50/32 group-hover:text-bone-50"
                   onClick={() => setSelectedArtistIndex(index)}
                   type="button"

@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
 import { ArrowUpRight, Calendar, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
-import type { Artist } from '../../data/siteData'
+import { useLanguage } from '../../context/useLanguage'
 import { siteData } from '../../data/siteData'
+import type { ArtistTranslation } from '../../i18n/translations'
 import { Button } from './Button'
 
 type ArtistModalProps = {
-  artist?: Artist
+  artist?: ArtistTranslation
   image?: string
   index?: number
   isOpen: boolean
@@ -20,6 +21,8 @@ export function ArtistModal({
   isOpen,
   onClose,
 }: ArtistModalProps) {
+  const { t } = useLanguage()
+
   useEffect(() => {
     if (!isOpen) {
       return
@@ -89,7 +92,7 @@ export function ArtistModal({
 
             <aside className="relative p-6 sm:p-8 lg:p-10">
               <p className="text-[0.68rem] font-extrabold uppercase tracking-[0.24em] text-bone-200/58">
-                Artist profile / Inkside Antigua
+                {t.artistModal.profile}
               </p>
               <h2
                 className="mt-5 font-display text-6xl uppercase leading-[0.82] text-bone-50 sm:text-7xl"
@@ -104,7 +107,7 @@ export function ArtistModal({
 
               <div className="mt-7 border-l border-bone-50/22 pl-4">
                 <p className="text-[0.68rem] font-extrabold uppercase tracking-[0.22em] text-bone-100/82">
-                  Enfoque artistico
+                  {t.artistModal.approach}
                 </p>
                 <p className="mt-3 text-sm leading-7 text-bone-200/68">
                   {artist.approach}
@@ -124,13 +127,13 @@ export function ArtistModal({
 
               <Button className="mt-8 w-full sm:w-auto" href={siteData.social.instagram}>
                 <Calendar aria-hidden className="mr-2 h-4 w-4" />
-                Reservar con este artista
+                {t.artistModal.cta}
                 <ArrowUpRight aria-hidden className="ml-2 h-4 w-4" />
               </Button>
             </aside>
 
             <button
-              aria-label="Cerrar perfil del artista"
+              aria-label={t.artistModal.close}
               className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center border border-bone-50/15 bg-ink-1000/78 text-bone-50 backdrop-blur transition hover:border-bone-50/45 hover:bg-bone-50/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50"
               onClick={onClose}
               type="button"

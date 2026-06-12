@@ -1,9 +1,12 @@
 import { ArrowUpRight } from 'lucide-react'
 import inksideLogo from '../../assets/images/brand/inkside-logo.png'
+import { useLanguage } from '../../context/useLanguage'
 import { siteData } from '../../data/siteData'
 import { Container } from '../ui/Container'
 
 export function Footer() {
+  const { t } = useLanguage()
+
   return (
     <footer className="border-t surface-line bg-ink-1000 py-10 text-sm text-bone-200/68">
       <Container>
@@ -23,18 +26,18 @@ export function Footer() {
               </span>
               <span>
                 <span className="block font-display text-4xl uppercase leading-none tracking-wide text-bone-50 transition group-hover:text-white">
-                  {siteData.name}
+                  {t.brand.name}
                 </span>
                 <span className="mt-2 block text-xs font-extrabold uppercase tracking-[0.18em] text-bone-200/58">
-                  {siteData.tagline}
+                  {t.brand.tagline}
                 </span>
               </span>
             </a>
-            <p className="mt-4 text-bone-200/58">{siteData.location}</p>
+            <p className="mt-4 text-bone-200/58">{t.brand.location}</p>
           </div>
 
           <nav className="grid gap-3 text-xs font-extrabold uppercase tracking-[0.18em]">
-            {siteData.footerLinks.map((link) => (
+            {t.nav.items.map((link) => (
               <a
                 className="transition hover:text-bone-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50"
                 href={link.href}
@@ -47,7 +50,7 @@ export function Footer() {
 
           <div className="grid gap-3 text-xs font-extrabold uppercase tracking-[0.18em]">
             <a
-              aria-label="Instagram de Inkside Antigua"
+              aria-label={t.footer.instagramAria}
               className="inline-flex items-center gap-2 transition hover:text-bone-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50"
               href={siteData.social.instagram}
               rel="noreferrer"
@@ -57,7 +60,7 @@ export function Footer() {
               <ArrowUpRight aria-hidden className="h-3.5 w-3.5" />
             </a>
             <a
-              aria-label="Facebook de Inkside Antigua"
+              aria-label={t.footer.facebookAria}
               className="inline-flex items-center gap-2 transition hover:text-bone-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50"
               href={siteData.social.facebook}
               rel="noreferrer"
@@ -71,13 +74,13 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-4 border-t surface-line pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs uppercase tracking-[0.16em] text-bone-200/48">
-            {'\u00a9 2026 Inkside Antigua. All rights reserved.'}
+            {t.footer.copyright}
           </p>
           <a
             className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-bone-200/48 transition hover:text-bone-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50"
             href="#inicio"
           >
-            Volver arriba
+            {t.footer.backToTop}
             <ArrowUpRight aria-hidden className="h-3.5 w-3.5" />
           </a>
         </div>
