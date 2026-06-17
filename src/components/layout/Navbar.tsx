@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { motion } from 'motion/react'
-import inksideLogo from '../../assets/images/brand/inkside-logo.png'
 import { useLanguage } from '../../context/useLanguage'
 import type { Language } from '../../i18n/translations'
 import { cn } from '../../lib/utils'
 import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
+import { LogoMark } from '../ui/LogoMark'
 
 function LanguageSwitch({ className }: { className?: string }) {
   const { language, setLanguage } = useLanguage()
@@ -60,26 +60,23 @@ export function Navbar() {
           : 'border-bone-50/8 bg-ink-1000/42',
       )}
     >
-      <Container className="flex min-h-18 items-center justify-between gap-4 xl:grid xl:min-h-20 xl:grid-cols-[minmax(14rem,1fr)_auto_minmax(14rem,1fr)] xl:gap-8">
+      <Container className="flex min-h-20 items-center justify-between gap-4 xl:grid xl:min-h-24 xl:grid-cols-[minmax(18rem,1fr)_auto_minmax(18rem,1fr)] xl:gap-8">
         <a
           className="group flex min-w-0 items-center gap-3 justify-self-start transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50 sm:gap-4"
           href="#inicio"
-          aria-label="Inkside Antigua"
+          aria-label={t.brand.name}
           onClick={() => setIsOpen(false)}
         >
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-bone-50/12 bg-black/40 p-1 shadow-[0_14px_44px_rgb(0_0_0/0.34)] backdrop-blur transition group-hover:border-bone-50/30 group-hover:bg-bone-50/6 sm:h-12 sm:w-12 xl:h-[52px] xl:w-[52px]">
-            <img
-              alt="Inkside Antigua"
-              className="h-full w-full object-contain opacity-95 transition group-hover:opacity-100"
-              src={inksideLogo}
-            />
-          </span>
+          <LogoMark
+            className="transition duration-300 group-hover:scale-[1.04]"
+            compact
+          />
           <span className="grid min-w-0 gap-0.5">
             <span className="font-display text-3xl uppercase leading-none tracking-wide text-bone-50 transition group-hover:text-white sm:text-4xl xl:text-[2.45rem]">
-              Inkside
+              {t.brand.shortName}
             </span>
             <span className="hidden text-[0.62rem] font-extrabold uppercase tracking-[0.28em] text-bone-200/52 sm:block">
-              Antigua
+              Studio
             </span>
           </span>
         </a>

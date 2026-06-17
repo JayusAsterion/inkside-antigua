@@ -1,8 +1,8 @@
 import { ArrowUpRight } from 'lucide-react'
-import inksideLogo from '../../assets/images/brand/inkside-logo.png'
 import { useLanguage } from '../../context/useLanguage'
 import { siteData } from '../../data/siteData'
 import { Container } from '../ui/Container'
+import { LogoMark } from '../ui/LogoMark'
 
 export function Footer() {
   const { t } = useLanguage()
@@ -15,15 +15,9 @@ export function Footer() {
             <a
               className="group inline-flex flex-col items-start gap-4 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bone-50 sm:flex-row sm:items-center sm:gap-5"
               href="#inicio"
-              aria-label="Inkside Antigua"
+              aria-label={t.brand.name}
             >
-              <span className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full border border-bone-50/10 bg-black/30 p-2.5 backdrop-blur transition group-hover:border-bone-50/24 group-hover:bg-bone-50/6">
-                <img
-                  alt="Inkside Antigua"
-                  className="h-full w-full object-contain opacity-95 transition group-hover:opacity-100"
-                  src={inksideLogo}
-                />
-              </span>
+              <LogoMark className="h-20 w-20 transition duration-300 group-hover:scale-[1.04] sm:h-24 sm:w-24" />
               <span>
                 <span className="block font-display text-4xl uppercase leading-none tracking-wide text-bone-50 transition group-hover:text-white">
                   {t.brand.name}

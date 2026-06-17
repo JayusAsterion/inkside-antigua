@@ -1,5 +1,8 @@
 const imageModules = import.meta.glob<{ default: string }>(
-  '../assets/images/tattoos/tattoo-*.{jpg,jpeg,png,webp}',
+  [
+    '../assets/images/tattoos/tattoo-*.{jpg,jpeg,png,webp}',
+    '!../assets/images/tattoos/tattoo-06.{jpg,jpeg,png,webp}',
+  ],
   { eager: true },
 )
 

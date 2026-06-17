@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'motion/react'
-import inksideLogo from '../assets/images/brand/inkside-logo.png'
 import { Section } from '../components/layout/Section'
 import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
+import { LogoMark } from '../components/ui/LogoMark'
 import { ServiceModal } from '../components/ui/ServiceModal'
 import { useLanguage } from '../context/useLanguage'
 import { getTattooImage } from '../data/tattooImages'
@@ -80,13 +80,9 @@ export function ServicesSection() {
       <div className="relative mt-12">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute left-[46%] top-[61%] z-20 hidden -translate-x-1/2 -translate-y-1/2 select-none xl:block"
+          className="pointer-events-none absolute left-[46%] top-[61%] z-20 hidden h-48 w-72 -translate-x-1/2 -translate-y-1/2 select-none xl:flex xl:items-center xl:justify-center 2xl:h-56 2xl:w-80"
         >
-          <img
-            alt=""
-            className="h-60 w-60 object-contain opacity-70 2xl:h-72 2xl:w-72"
-            src={inksideLogo}
-          />
+          <LogoMark className="h-full w-full opacity-90" />
         </div>
 
         <motion.div

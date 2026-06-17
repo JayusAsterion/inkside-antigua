@@ -8,6 +8,6 @@ export type LanguageContextValue = {
   t: (typeof translations)[Language]
 }
 
-export const LANGUAGE_STORAGE_KEY = 'inkside-language'
+export const LANGUAGE_STORAGE_KEY = 'noir-ink-language'
 
 export const LanguageContext = createContext<LanguageContextValue | undefined>(undefined)

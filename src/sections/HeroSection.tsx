@@ -1,9 +1,9 @@
-import { ArrowUpRight, Sparkles } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'motion/react'
-import inksideLogo from '../assets/images/brand/inkside-logo.png'
 import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
 import { Container } from '../components/ui/Container'
+import { LogoMark } from '../components/ui/LogoMark'
 import { useLanguage } from '../context/useLanguage'
 import { getTattooImage } from '../data/tattooImages'
 import { fadeInUp, staggerContainer } from '../lib/animations'
@@ -14,7 +14,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative flex min-h-screen overflow-hidden bg-ink-950 pt-28"
+      className="relative flex min-h-[100dvh] overflow-hidden bg-ink-950 pt-24"
       id="inicio"
     >
       <div className="absolute inset-0 texture-grid opacity-45" />
@@ -30,23 +30,15 @@ export function HeroSection() {
         >
           <Badge>{t.hero.badge}</Badge>
 
-          <motion.p
-            className="mt-6 flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.28em] text-bone-200/68"
-            variants={fadeInUp}
-          >
-            <Sparkles aria-hidden className="h-4 w-4 text-bone-100/82" />
-            {t.hero.eyebrow}
-          </motion.p>
-
           <motion.h1
-            className="mt-5 max-w-5xl text-balance font-display text-[clamp(4.6rem,17vw,13.5rem)] uppercase leading-[0.78] text-bone-50"
+            className="mt-6 max-w-5xl text-balance font-display text-[clamp(3.7rem,7.8vw,7.6rem)] uppercase leading-[0.86] text-bone-50"
             variants={fadeInUp}
           >
             {t.hero.title}
           </motion.h1>
 
           <motion.div
-            className="mt-8 grid gap-6 border-l border-bone-50/14 pl-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end"
+            className="mt-8 grid gap-6 border-l border-bone-50/14 pl-5 2xl:grid-cols-[minmax(0,1fr)_auto] 2xl:items-end"
             variants={fadeInUp}
           >
             <p className="max-w-xl text-lg leading-8 text-bone-200/78 sm:text-xl">
@@ -84,12 +76,12 @@ export function HeroSection() {
             ) : null}
             <div className="absolute inset-0 bg-gradient-to-br from-ink-1000/18 via-bone-50/6 to-ink-1000/58 md:to-ink-1000/68" />
             <div className="absolute inset-0 texture-grid opacity-14 md:opacity-18" />
-            <img
-              alt=""
-              aria-hidden="true"
-              className="absolute right-6 top-6 h-24 w-24 object-contain opacity-18 grayscale mix-blend-screen sm:h-32 sm:w-32"
-              src={inksideLogo}
-            />
+            <div
+            aria-hidden="true"
+            className="absolute right-5 top-5 h-16 w-24 overflow-hidden border border-bone-50/10 bg-black/35 opacity-55 mix-blend-screen sm:h-20 sm:w-32"
+          >
+              <LogoMark className="h-full w-full border-0 bg-transparent opacity-90" />
+            </div>
           </div>
           <div className="absolute bottom-8 left-0 h-[46%] w-[52%] overflow-hidden border surface-line metal-sheen">
             {heroImages[1] ? (
